@@ -1,4 +1,5 @@
 class Consulta {
+  
   constructor(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) {
     this.id = id;
     this.petId = petId;

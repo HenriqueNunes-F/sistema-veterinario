@@ -1,34 +1,38 @@
+const Pet = require("../models/Pet");
+
 const pets = [
-  {
-    id: 1,
-    nome: "Thor",
-    especie: "Cachorro",
-    raca: "Golden Retriever",
-    dataNascimento: "2020-04-10",
-    peso: 31.5,
-    sexo: "Macho",
-    tutorId: 1
-  },
-  {
-    id: 2,
-    nome: "Luna",
-    especie: "Gato",
-    raca: "Siamês",
-    dataNascimento: "2021-08-22",
-    peso: 4.2,
-    sexo: "Fêmea",
-    tutorId: 1
-  },
-  {
-    id: 3,
-    nome: "Bob",
-    especie: "Cachorro",
-    raca: "Vira-lata",
-    dataNascimento: "2019-02-15",
-    peso: 18.7,
-    sexo: "Macho",
-    tutorId: 2
-  }
+  new Pet(
+    1,
+    "Thor",
+    "Cachorro",
+    "Golden Retriever",
+    "2020-04-10",
+    31.5,
+    "Macho",
+    1
+  ),
+
+  new Pet(
+    2,
+    "Luna",
+    "Gato",
+    "Siamês",
+    "2021-08-22",
+    4.2,
+    "Fêmea",
+    1
+  ),
+
+  new Pet(
+    3,
+    "Bob",
+    "Cachorro",
+    "Vira-lata",
+    "2019-02-15",
+    18.7,
+    "Macho",
+    2
+  )
 ];
 
 module.exports = pets;

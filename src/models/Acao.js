@@ -1,4 +1,5 @@
 class Acao {
+  
   constructor(id, consultaId, descricao, tipo, valor) {
     this.id = id;
     this.consultaId = consultaId;
@@ -9,3 +10,5 @@ class Acao {
 }
 
 module.exports = Acao;
+
+

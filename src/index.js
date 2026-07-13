@@ -2,6 +2,7 @@ const tutorService = require("./services/tutorService");
 const petService = require("./services/petService");
 const veterinarioService = require("./services/veterinarioService");
 const consultaService = require("./services/consultaService");
+const Acao = require("./models/acao");
 
 console.log("=== Sistema Veterinário ===");
 
