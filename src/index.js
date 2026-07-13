@@ -89,3 +89,26 @@ console.log(novoVeterinario);
 
 console.log("\nVeterinários após cadastro:");
 console.log(veterinarioService.listarVeterinarios());
+
+console.log("\nRegistrando nova consulta:");
+
+const resultadoConsulta = consultaService.registrarConsulta(
+  3, // id consulta
+  4, // id pet
+  2, // id veterinario
+  "2026-07-09 09:00",
+  "Avaliação ortopédica",
+  "Pet apresentou dificuldade para apoiar a pata traseira.",
+  "Suspeita de lesão muscular"
+);
+
+if (!resultadoConsulta.sucesso) {
+  console.log("Consulta não registrada:");
+  console.log(resultadoConsulta.mensagens);
+} else {
+  console.log(resultadoConsulta.mensagens);
+  console.log(resultadoConsulta.consulta);
+}
+
+console.log("\nConsultas após registro:");
+console.log(consultaService.listarConsultas());
