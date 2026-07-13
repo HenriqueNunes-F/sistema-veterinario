@@ -14,9 +14,6 @@ console.log(petService.listarPets());
 console.log("\nPets com seus tutores:");
 console.log(petService.listarPetsComTutor());
 
-console.log("\nPets do tutor 1:");
-console.log(tutorService.listarPetsDoTutor(1));
-
 console.log("\nVeterinários cadastrados:");
 console.log(veterinarioService.listarVeterinarios());
 
@@ -139,4 +136,16 @@ if (!historicoPet) {
   console.log("Pet não encontrado");
 } else {
     console.dir(historicoPet, { depth: null });
+}
+
+console.log("\nPets do tutor 1:");  // listar todos os pets do tutor por ID.
+
+
+const petsDoTutor = tutorService.listarPetsDoTutor(1);
+
+if (!petsDoTutor) {  
+  console.log("Tutor não encontrado !");
+  
+} else { 
+  console.log(petsDoTutor);  
 }
