@@ -75,3 +75,17 @@ if (!novoPet) {
 
 console.log("\nPets após cadastro:");
 console.log(petService.listarPets());
+
+console.log("\n Cadastrar novo Veterinario ") // criando um novo veterinario 
+
+const novoVeterinario = veterinarioService.cadastrarVeterinario (
+   3,
+  "Dra. Beatriz Alves",
+  "CRMV-PR 55555",
+  "Ortopedia veterinária"
+);
+
+console.log(novoVeterinario);
+
+console.log("\nVeterinários após cadastro:");
+console.log(veterinarioService.listarVeterinarios());

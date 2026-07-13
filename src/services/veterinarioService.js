@@ -1,5 +1,6 @@
 const veterinarios = require("../data/veterinarios");
 const consultas = require("../data/consultas");
+const Veterinario = require("../models/Veterinario");
 
 function listarVeterinarios() {
   return veterinarios;
@@ -30,9 +31,18 @@ function listarResumoDeAtendimentos() {
   });
 }
 
+function cadastrarVeterinario (id,nome, crmv, especialidade) {
+  const novoVeterinario = new Veterinario (id, nome, crmv, especialidade);
+
+  veterinarios.push(novoVeterinario);
+
+  return novoVeterinario;
+}
+
 module.exports = {
   listarVeterinarios,
   buscarVeterinarioPorId,
   contarConsultasPorVeterinario,
-  listarResumoDeAtendimentos
+  listarResumoDeAtendimentos,
+  cadastrarVeterinario
 };
