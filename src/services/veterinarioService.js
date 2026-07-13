@@ -12,21 +12,21 @@ function buscarVeterinarioPorId(id) {
   });
 }
 
-function contarConsultasPorVeterinario(veterinarioId) {
+function contarConsultasPorVeterinario(veterinarioId) { // conta quantas consultas teve por veterinario
   const consultasDoVeterinario = consultas.filter((consulta) => {
-    return consulta.veterinarioId === veterinarioId;
+    return consulta.veterinarioId === veterinarioId; 
   });
 
-  return consultasDoVeterinario.length;
+  return consultasDoVeterinario.length; // faz a conta das consultas.
 }
 
-function listarResumoDeAtendimentos() {
+function listarResumoDeAtendimentos() { // resume os atendimentos por veterinario.
   return veterinarios.map((veterinario) => {
     return {
       id: veterinario.id,
       nome: veterinario.nome,
       especialidade: veterinario.especialidade,
-      totalConsultas: contarConsultasPorVeterinario(veterinario.id)
+      totalConsultas: contarConsultasPorVeterinario(veterinario.id)  
     };
   });
 }

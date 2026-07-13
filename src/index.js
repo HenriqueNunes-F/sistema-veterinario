@@ -18,8 +18,6 @@ console.log(petService.listarPetsComTutor());
 console.log("\nVeterinários cadastrados:");
 console.log(veterinarioService.listarVeterinarios());
 
-console.log("\nResumo de atendimentos por veterinário:");
-console.log(veterinarioService.listarResumoDeAtendimentos());
 
 console.log("\nValor total da consulta 1:");
 console.log(consultaService.calcularValorTotalDaConsulta(1));
@@ -167,5 +165,7 @@ if (!petsPeloNomeDoTutor) { // se for diferente a resposta de true  mostre que n
   
 } else {
   console.log(petsPeloNomeDoTutor);
-  
 } 
+
+console.log("\nResumo de atendimentos por veterinário:");
+console.log(veterinarioService.listarResumoDeAtendimentos());
