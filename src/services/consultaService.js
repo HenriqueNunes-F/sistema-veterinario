@@ -3,6 +3,7 @@ const acoes = require("../data/acoes");
 const pets = require("../data/pets");
 const veterinarios = require("../data/veterinarios");
 const Consulta = require("../models/Consulta");
+const Acao = require("../models/Acao");
 
 function listarConsultas() {
   return consultas;
@@ -115,6 +116,36 @@ function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observaco
   };
 }
 
+function adicionarAcaoNaConsulta(id, consultaId, descricao, tipo, valor) {
+  const consultaExiste = consultas.find((consulta) => {
+    return consulta.id === consultaId;
+  });
+
+  if (!consultaExiste) {
+    return {
+      sucesso: false,
+      mensagens: ["Consulta não encontrada"],
+      acao: null
+    };
+  }
+
+  const novaAcao = new Acao(
+    id,
+    consultaId,
+    descricao,
+    tipo,
+    valor
+  );
+
+  acoes.push(novaAcao);
+
+  return {
+    sucesso: true,
+    mensagens: ["Ação adicionada com sucesso"],
+    acao: novaAcao
+  };
+}
+
 module.exports = {
   listarConsultas,
   buscarConsultaPorId,
@@ -122,5 +153,6 @@ module.exports = {
   listarAcoesDaConsulta,
   calcularValorTotalDaConsulta,
   listarHistoricoDoPet,
-  registrarConsulta
+  registrarConsulta,
+  adicionarAcaoNaConsulta
 };

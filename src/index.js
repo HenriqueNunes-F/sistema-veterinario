@@ -112,3 +112,27 @@ if (!resultadoConsulta.sucesso) {
 
 console.log("\nConsultas após registro:");
 console.log(consultaService.listarConsultas());
+
+console.log("\nAdicionando ação na consulta 3:"); // adicionar ações a consulta
+
+const resultadoAcao = consultaService.adicionarAcaoNaConsulta(
+  5, // id acao
+  3, // id consulta 
+  "Avaliação ortopédica completa",
+  "Exame",
+  180
+);
+
+if (!resultadoAcao.sucesso) {
+  console.log("Ação não adicionada:");
+  console.log(resultadoAcao.mensagens);
+} else {
+  console.log(resultadoAcao.mensagens);
+  console.log(resultadoAcao.acao);
+}
+
+console.log("\nAções da consulta 3:");
+console.log(consultaService.listarAcoesDaConsulta(3));
+
+console.log("\nValor total da consulta 3:");
+console.log(consultaService.calcularValorTotalDaConsulta(3));
