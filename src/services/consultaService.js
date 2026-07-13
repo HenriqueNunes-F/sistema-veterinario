@@ -2,6 +2,8 @@ const consultas = require("../data/consultas");
 const acoes = require("../data/acoes");
 const pets = require("../data/pets");
 const veterinarios = require("../data/veterinarios");
+const Consulta = require("../models/Consulta");
+const Acao = require("../models/Acao");
 
 function listarConsultas() {
   return consultas;
@@ -35,7 +37,83 @@ function calcularValorTotalDaConsulta(consultaId) {
   return total;
 }
 
-function listarHistoricoDoPet(petId) {
+function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) {
+  const petExiste = pets.find((pet) => {
+    return pet.id === petId;
+  });
+
+  const veterinarioExiste = veterinarios.find((veterinario) => {
+    return veterinario.id === veterinarioId;
+  });
+
+  const mensagens = [];
+
+  if (!petExiste) {
+    mensagens.push("Pet não encontrado");
+  }
+
+  if (!veterinarioExiste) {
+    mensagens.push("Veterinário não encontrado");
+  }
+
+  if (mensagens.length > 0) {
+    return {
+      sucesso: false,
+      mensagens: mensagens,
+      consulta: null
+    };
+  }
+
+  const novaConsulta = new Consulta(
+    id,
+    petId,
+    veterinarioId,
+    dataHora,
+    motivo,
+    observacoes,
+    diagnostico
+  );
+
+  consultas.push(novaConsulta);
+
+  return {
+    sucesso: true,
+    mensagens: ["Consulta registrada com sucesso"],
+    consulta: novaConsulta
+  };
+}
+
+function adicionarAcaoNaConsulta(id, consultaId, descricao, tipo, valor) {
+  const consultaExiste = consultas.find((consulta) => {
+    return consulta.id === consultaId;
+  });
+
+  if (!consultaExiste) {
+    return {
+      sucesso: false,
+      mensagens: ["Consulta não encontrada"],
+      acao: null
+    };
+  }
+
+  const novaAcao = new Acao(
+    id,
+    consultaId,
+    descricao,
+    tipo,
+    valor
+  );
+
+  acoes.push(novaAcao);
+
+  return {
+    sucesso: true,
+    mensagens: ["Ação adicionada com sucesso"],
+    acao: novaAcao
+  };
+}
+
+function listarHistoricoDoPet(petId) { // lista o histórico de consultas de um pet
   const pet = pets.find((pet) => {
     return pet.id === petId;
   });
@@ -44,9 +122,13 @@ function listarHistoricoDoPet(petId) {
     return undefined;
   }
 
-  const consultasDoPet = consultas.filter((consulta) => {
-    return consulta.petId === petId;
-  });
+  const consultasDoPet = consultas
+    .filter((consulta) => {
+      return consulta.petId === petId;
+    })
+    .sort((consultaA, consultaB) => {
+      return new Date(consultaA.dataHora) - new Date(consultaB.dataHora);
+    });
 
   const historico = consultasDoPet.map((consulta) => {
     const veterinario = veterinarios.find((veterinario) => {
@@ -74,5 +156,7 @@ module.exports = {
   listarConsultasPorPetId,
   listarAcoesDaConsulta,
   calcularValorTotalDaConsulta,
-  listarHistoricoDoPet
+  listarHistoricoDoPet,
+  registrarConsulta,
+  adicionarAcaoNaConsulta
 };

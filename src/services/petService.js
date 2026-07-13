@@ -1,5 +1,6 @@
 const pets = require("../data/pets");
 const tutores = require("../data/tutores");
+const Pet = require("../models/Pet");
 
 function listarPets() {
   return pets;
@@ -39,10 +40,36 @@ function listarPetsComTutor() {
   });
 }
 
+function cadastrarPet(id, nome, especie, raca, dataNascimento, peso, sexo, tutorId) {
+  const tutorExiste = tutores.find((tutor) => {
+    return tutor.id === tutorId;
+  });
+
+  if (!tutorExiste) {
+    return null;
+  }
+
+  const novoPet = new Pet(
+    id,
+    nome,
+    especie,
+    raca,
+    dataNascimento,
+    peso,
+    sexo,
+    tutorId
+  );
+
+  pets.push(novoPet);
+
+  return novoPet;
+}
+
 module.exports = {
   listarPets,
   buscarPetPorId,
   listarPetsPorTutorId,
   buscarPetPorNome,
-  listarPetsComTutor
+  listarPetsComTutor,
+  cadastrarPet
 };

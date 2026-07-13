@@ -1,5 +1,6 @@
 const veterinarios = require("../data/veterinarios");
 const consultas = require("../data/consultas");
+const Veterinario = require("../models/Veterinario");
 
 function listarVeterinarios() {
   return veterinarios;
@@ -11,7 +12,7 @@ function buscarVeterinarioPorId(id) {
   });
 }
 
-function contarConsultasPorVeterinario(veterinarioId) {
+function contarConsultasPorVeterinario(veterinarioId) { // conta quantas consultas um veterinário atendeu
   const consultasDoVeterinario = consultas.filter((consulta) => {
     return consulta.veterinarioId === veterinarioId;
   });
@@ -19,7 +20,7 @@ function contarConsultasPorVeterinario(veterinarioId) {
   return consultasDoVeterinario.length;
 }
 
-function listarResumoDeAtendimentos() {
+function listarResumoDeAtendimentos() { // lista veterinários com total de consultas atendidas
   return veterinarios.map((veterinario) => {
     return {
       id: veterinario.id,
@@ -30,9 +31,18 @@ function listarResumoDeAtendimentos() {
   });
 }
 
+function cadastrarVeterinario(id, nome, crmv, especialidade) {
+  const novoVeterinario = new Veterinario(id, nome, crmv, especialidade);
+
+  veterinarios.push(novoVeterinario);
+
+  return novoVeterinario;
+}
+
 module.exports = {
   listarVeterinarios,
   buscarVeterinarioPorId,
   contarConsultasPorVeterinario,
-  listarResumoDeAtendimentos
+  listarResumoDeAtendimentos,
+  cadastrarVeterinario
 };
