@@ -118,3 +118,78 @@ Este é o método que quero que você pratique — **pense antes de codar**:
 Não tente resolver tudo de uma vez. Um sistema grande é só um monte de problemas pequenos, um do lado do outro. Resolva um, depois o próximo. Se travar, **volte para o desenho** — quase todo erro de programação começa como um erro de entendimento do problema.
 
 Bom trabalho! 🚀
+
+
+
+
+
+
+
+
+## ANOTAÇÕES HENRIQUE--
+
+
+## Funcionalidades
+
+1. Cadastrar tutores, pets e veterinários  
+   - `cadastrarTutor` em `src/services/tutorService.js`
+   - `cadastrarPet` em `src/services/petService.js`
+   - `cadastrarVeterinario` em `src/services/veterinarioService.js`
+
+2. Vincular pet a tutor  
+   - `cadastrarPet` em `src/services/petService.js`
+
+3. Registrar consulta com pet e veterinário  
+   - `registrarConsulta` em `src/services/consultaService.js`
+
+4. Adicionar ações à consulta  
+   - `adicionarAcaoNaConsulta` em `src/services/consultaService.js`
+
+5. Consultar histórico de um pet com consultas e ações em ordem de data  
+   - `listarHistoricoDoPet` em `src/services/consultaService.js`
+
+6. Listar pets de um tutor  
+   - `listarPetsDoTutor` em `src/services/tutorService.js`
+
+## Extras
+
+1. Calcular valor total da consulta somando ações  
+   - `calcularValorTotalDaConsulta` em `src/services/consultaService.js`
+
+2. Mostrar quantas consultas cada veterinário atendeu  
+   - `listarResumoDeAtendimentos` em `src/services/veterinarioService.js`
+
+3. Buscar pet pelo nome do tutor  
+   - `buscarPetsPeloNomeDoTutor` em `src/services/tutorService.js`
+
+
+   ## Conceitos praticados nesta fase
+
+- `models`: representam as entidades do sistema.
+- `data`: guardam os objetos simulados em arrays.
+- `services`: guardam as regras e ações do sistema.
+- `index.js`: usado para testar as funcionalidades no console.
+
+## Métodos de array usados
+
+- `find`: busca um único item.
+- `filter`: busca vários itens.
+- `map`: transforma uma lista.
+- `sort`: ordena uma lista.
+- `reduce`: reduz uma lista a um valor final.
+- `push`: adiciona um item no array.
+
+## Frases para gravar 
+
+
+- Classe é substantivo.
+- Service é verbo.
+- Data é a gaveta dos objetos.
+- Index chama e testa.
+- `find` procura um.
+- `filter` pega vários.
+- `map` transforma.
+- `sort` ordena.
+- `reduce` soma/acumula.
+- `push` guarda.
+- `return` devolve.

@@ -5,7 +5,7 @@ const consultaService = require("./services/consultaService");
 
 console.log("=== Sistema Veterinário ===");
 
-// Listagens iniciais
+// Listagens iniciais.
 console.log("\nTutores cadastrados:");
 console.log(tutorService.listarTutores());
 
@@ -21,7 +21,7 @@ console.log(veterinarioService.listarVeterinarios());
 console.log("\nValor total da consulta 1:");
 console.log(consultaService.calcularValorTotalDaConsulta(1));
 
-// Cadastros
+// Cadastros 
 console.log("\nCadastrando novo tutor:");
 
 const novoTutor = tutorService.cadastrarTutor(
@@ -60,7 +60,7 @@ if (!novoPet) {
 console.log("\nPets após cadastro:");
 console.log(petService.listarPets());
 
-console.log("\nCadastrando novo veterinário:");
+console.log("\nCadastrando novo veterinário:"); 
 
 const novoVeterinario = veterinarioService.cadastrarVeterinario(
   3,
