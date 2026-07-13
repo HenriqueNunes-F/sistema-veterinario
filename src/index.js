@@ -2,7 +2,6 @@ const tutorService = require("./services/tutorService");
 const petService = require("./services/petService");
 const veterinarioService = require("./services/veterinarioService");
 const consultaService = require("./services/consultaService");
-const Acao = require("./models/acao");
 
 console.log("=== Sistema Veterinário ===");
 
@@ -51,3 +50,28 @@ console.log(novoTutor);
 
 console.log("\nTutores após cadastro:");
 console.log(tutorService.listarTutores());
+
+
+console.log("\nCadastrando novo Pet"); //criando um novo pet ele tem que ser vinculado ao tutor existente se nao, tem que exibir uma mensagem dizendo que o tutor nao existe e nao foi cadastrado.
+
+const novoPet = petService.cadastrarPet(
+  4,
+  "Mel",
+  "Cachorro",
+  "Poodle",
+  "2022-03-15",
+  6.8,
+  "Fêmea",
+  1
+);
+
+if (!novoPet) {
+  console.log("Tutor não encontrado. Pet não cadastrado");
+  
+} else {
+  console.log(novoPet)
+
+}
+
+console.log("\nPets após cadastro:");
+console.log(petService.listarPets());

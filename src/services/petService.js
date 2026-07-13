@@ -1,5 +1,6 @@
-const pets = require("../data/pets");
-const tutores = require("../data/tutores");
+const pets = require("../data/pets"); // lista 
+const tutores = require("../data/tutores"); // lista
+const Pet = require("../models/Pet"); // classe
 
 function listarPets() {
   return pets;
@@ -39,10 +40,39 @@ function listarPetsComTutor() {
   });
 }
 
+function cadastrarPet(id, nome, especie, raca, dataNascimento, peso, sexo,  tutorId) {  
+console.log("tutorId recebido:", tutorId);
+console.log("tipo do tutorId:", typeof tutorId);
+console.log("ids dos tutores:", tutores.map((tutor) => tutor.id));
+
+  const tutorExiste = tutores.find((tutor) =>{  // existe algum tutor com o Id igual ao tutorId Recebido ?
+
+    return tutor.id === tutorId;
+  });
+  if (!tutorExiste){
+    return null;
+  }
+const novoPet = new Pet(
+  id,
+    nome,
+    especie,
+    raca,
+    dataNascimento,
+    peso,
+    sexo,
+    tutorId
+);
+
+pets.push(novoPet);
+return novoPet;
+}
+
+
 module.exports = {
   listarPets,
   buscarPetPorId,
   listarPetsPorTutorId,
   buscarPetPorNome,
-  listarPetsComTutor
+  listarPetsComTutor,
+  cadastrarPet
 };
