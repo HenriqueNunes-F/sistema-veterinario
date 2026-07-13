@@ -23,15 +23,6 @@ console.log(veterinarioService.listarVeterinarios());
 console.log("\nResumo de atendimentos por veterinário:");
 console.log(veterinarioService.listarResumoDeAtendimentos());
 
-console.log("\nHistórico do pet 1:");
-const historicoPet = consultaService.listarHistoricoDoPet(1);
-
-if (!historicoPet) {
-  console.log("Pet não encontrado");
-} else {
-  console.log(historicoPet);
-}
-
 console.log("\nValor total da consulta 1:");
 console.log(consultaService.calcularValorTotalDaConsulta(1));
 
@@ -136,3 +127,16 @@ console.log(consultaService.listarAcoesDaConsulta(3));
 
 console.log("\nValor total da consulta 3:");
 console.log(consultaService.calcularValorTotalDaConsulta(3));
+
+
+console.log("\nTeste pets antes do histórico:");
+console.log(petService.listarPets());
+
+console.log("\nHistórico do pet 4:"); // monta o historico com consultas açoes e valor total
+const historicoPet = consultaService.listarHistoricoDoPet(9999);
+
+if (!historicoPet) {
+  console.log("Pet não encontrado");
+} else {
+    console.dir(historicoPet, { depth: null });
+}

@@ -4,6 +4,7 @@ const pets = require("../data/pets");
 const veterinarios = require("../data/veterinarios");
 const Consulta = require("../models/Consulta");
 const Acao = require("../models/Acao");
+const { contarConsultasPorVeterinario } = require("./veterinarioService");
 
 function listarConsultas() {
   return consultas;
@@ -37,38 +38,6 @@ function calcularValorTotalDaConsulta(consultaId) {
   return total;
 }
 
-function listarHistoricoDoPet(petId) {
-  const pet = pets.find((pet) => {
-    return pet.id === petId;
-  });
-
-  if (!pet) {
-    return undefined;
-  }
-
-  const consultasDoPet = consultas.filter((consulta) => {
-    return consulta.petId === petId;
-  });
-
-  const historico = consultasDoPet.map((consulta) => {
-    const veterinario = veterinarios.find((veterinario) => {
-      return veterinario.id === consulta.veterinarioId;
-    });
-
-    return {
-      consultaId: consulta.id,
-      pet: pet.nome,
-      dataHora: consulta.dataHora,
-      motivo: consulta.motivo,
-      diagnostico: consulta.diagnostico,
-      veterinario: veterinario ? veterinario.nome : "Veterinário não encontrado",
-      acoes: listarAcoesDaConsulta(consulta.id),
-      valorTotal: calcularValorTotalDaConsulta(consulta.id)
-    };
-  });
-
-  return historico;
-}
 
 function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) {
   const petExiste = pets.find((pet) => {
@@ -145,6 +114,37 @@ function adicionarAcaoNaConsulta(id, consultaId, descricao, tipo, valor) {
     acao: novaAcao
   };
 }
+function listarHistoricoDoPet(petId) {  // lista o histórico de consultas de um pet
+  const pet = pets.find((pet) => {
+    return pet.id === petId;
+  });
+  
+  if (!pet) {
+    return undefined;
+  }
+
+  const consultasDoPet = consultas.filter((consulta) => {
+    return consulta.petId === petId;
+  })
+  .sort((consultaA, consultaB,) =>{ // ordena as consultas da mais antiga para a mais recente
+
+    return new Date(consultA.dataHora) - new Date(consultaB.dataHora); // ordena as consultas da mais antiga para a mais recente
+  });
+const historico = consultasDoPet.map((consulta) => {
+  return {
+    consultaId: consulta.id,
+    pet: pet.nome,
+    dataHora: consulta.dataHora,
+    motivo: consulta.motivo,
+    diagnostico: consulta.diagnostico,
+    acoes: listarAcoesDaConsulta(consulta.id),
+valorTotal: calcularValorTotalDaConsulta(consulta.id) // calcula o total das ações da consulçta
+  };
+});
+
+return historico;
+
+}
 
 module.exports = {
   listarConsultas,
@@ -155,4 +155,5 @@ module.exports = {
   listarHistoricoDoPet,
   registrarConsulta,
   adicionarAcaoNaConsulta
+  
 };
