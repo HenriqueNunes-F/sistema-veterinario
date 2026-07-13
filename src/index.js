@@ -158,3 +158,8 @@ if (!petsPeloNomeDoTutor) {
 // Resumo de atendimentos
 console.log("\nResumo de atendimentos por veterinário:");
 console.log(veterinarioService.listarResumoDeAtendimentos());
+
+
+// exercicios de javascript assÍncrono  ( DEIXAR COMO COMENTARIO NAO ESQUECER)
+
+
