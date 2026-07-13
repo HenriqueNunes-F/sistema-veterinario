@@ -35,3 +35,19 @@ if (!historicoPet) {
 
 console.log("\nValor total da consulta 1:");
 console.log(consultaService.calcularValorTotalDaConsulta(1));
+
+console.log("\nCadastrando novo tutor:");  // cadastrando novo tutor.
+
+const novoTutor = tutorService.cadastrarTutor(
+  3,
+  "João Pereira",
+  "111.222.333-44",
+  "(41) 97777-3333",
+  "joao@email.com",
+  "Rua Nova, 300"
+);
+
+console.log(novoTutor);
+
+console.log("\nTutores após cadastro:");
+console.log(tutorService.listarTutores());
