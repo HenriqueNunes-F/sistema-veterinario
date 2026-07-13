@@ -2,6 +2,7 @@ const tutorService = require("./services/tutorService");
 const petService = require("./services/petService");
 const veterinarioService = require("./services/veterinarioService");
 const consultaService = require("./services/consultaService");
+const tutor = require("./models/Tutor");
 
 console.log("=== Sistema Veterinário ===");
 
@@ -149,3 +150,22 @@ if (!petsDoTutor) {
 } else { 
   console.log(petsDoTutor);  
 }
+
+
+
+console.log("\nTutores cadastrados:"); // lista os tutores cadastrados para pesquisa 
+console.log(tutorService.listarTutores());
+
+
+console.log("\nPets pelo nome do tutor : Ana Souza "); // buscando pets pelo nome do tutor.
+
+
+const petsPeloNomeDoTutor = tutorService.buscarPetsPeloNomeDoTutor("Ana Souza");
+
+if (!petsPeloNomeDoTutor) { // se for diferente a resposta de true  mostre que nao foi encontrado se nao, mostre o pet pelo tutor passado.
+  console.log("Tutor não encontrado.");
+  
+} else {
+  console.log(petsPeloNomeDoTutor);
+  
+} 

@@ -12,13 +12,6 @@ function buscarTutorPorId(id) { // um tutor tem muitos pets, todo pet pertence a
   });
 }
 
-function buscarTutorPeloNome(nome) {  // pedido extra, buscar pet pelo nome do tutor.
-   
-  return tutores.find((tutor) => {
-    return tutor.nome === nome;
-  });
-  
-}
 
 function cadastrarTutor ( id, nome, cpf, telefone, email,endereco) {
   const novoTutor = new Tutor( id, nome, cpf, telefone, email, endereco);
@@ -41,10 +34,29 @@ function listarPetsDoTutor(tutorId) { //6. **Listar** os pets de um determinado 
     return pet.tutorId === tutorId;
   });
 }
+
+function buscarPetsPeloNomeDoTutor ( nome) { // dado o nome de um tutor, mostrar os pets dele ( pedido extra )
+  const tutor = tutores.find((tutor) => {  // acho o tutor pelo nome
+ 
+    return tutor.nome === nome;  
+  });
+
+  if (!tutor) {
+    return undefined;
+  }
+
+  return pets.filter((pet) => { // acho os pet pelo id do tutor.
+
+    return pet.tutorId === tutor.id;
+  });
+  
+}
+
 module.exports = {
   listarTutores,
   buscarTutorPorId,
   listarPetsDoTutor,
-  buscarTutorPeloNome,
+  buscarPetsPeloNomeDoTutor,
   cadastrarTutor
 };
+
