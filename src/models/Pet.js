@@ -1,4 +1,4 @@
-class Pet {
+class Pet { // Pet guarda tutorId.
   constructor(id, nome, especie, raca, dataNascimento, peso, sexo, tutorId) {
     this.id = id;
     this.nome = nome;

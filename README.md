@@ -121,12 +121,81 @@ Bom trabalho! 🚀
 
 ## ANOTAÇÕES HENRIQUE
 
+
+entender como o enunciado vira codigo 
+entender onde cada funcao deve ficar
+Entender como uma funcionalidade do enunciado vira uma função dentro de um service, usando classes, dados simulados, relacionamentos por ID e exportação entre arquivos.
+
+depois de entender onde cada parte do enunciado vai no projeto ficou mais claro que 
+models representava as entidades
+data guardava os objetos simulados
+services guardavam as regras e funcionalidades
+e o index era onde eu iria testar todo os sistema !
+
+preciso reforçar que a ideia de classe é apenas o molde enquanto os dados de data sao os objetos reais criados com NEW.
+e com isso entender que o service eu iria manipular esses dados !
+
+uma outra dificuldade foi entender como os relacionamentos iriam se transformar em codigos a principal dificuldade foi
+entender que nao preciso chamar todos os objetos e sim o  ID.
+
+ou seja cada funcao era por id e depois eu filtrava, buscava e criava outra lista para fazer oque o enunciado pedia !
+
+
+teve muitos errados de codigo mesmo letras maiusculas, nao fechar as funcoes, nao colocar o return para que o codigo parasse, 
+ou colocar o return antes e nao havia resposta
+
+quando usar map, find e filter entao precisava levar varias vezes o enunciado e como estruturar cada funcionalidade
+
+
+entao decidi organizar o projeto em camadas !
+
+models
+data
+services
+index.js
+
+ficou mais facil a organizacao porem comecei a criar as regras (services) antes e depois as classes
+porem fiquei sem entender algumas partes entao entendi que as classes vem antes dos services porque no mapa fica mais facil a identifacao das ligacoes e como será criado as regras.
+
+deixei como :
+
+entidade / classes
+objetos criados com new
+dados simulados
+services
+testes no index.js
+
+e depois as identacoes para identificar onde cada ligacao ia
+
+após isso para entender cada funcionalidade comecei os testes no index.js
+
+entao comecei cadastrando tutor, cadastrando pet, cadastrando veterinario, e por ultimo registrando consulta ! 
+e um ponto que decidi melhorar foi quando fiz registro consulta onde quando dava algo errado ao invez de retornar null
+prefiri retornar uma resposta com informa
+{
+  sucesso: false,
+  mensagens: ["Pet não encontrado"],
+  consulta: null
+}
+onde mostra onde realmente está o erro.
+
+ e para afins de pratica todo e qualquer avanço foi feito uma branch para nao impactar na main.
+ 
+
+
+
+
+
 ## Funcionalidades
+
+
+
 
 1. Cadastrar tutores, pets e veterinários
    - `cadastrarTutor` em `src/services/tutorService.js`
    - `cadastrarPet` em `src/services/petService.js`
    - `cadastrarVeterinario` em `src/services/veterinarioService.js`
+
 
 2. Vincular pet a tutor
    - `cadastrarPet` em `src/services/petService.js`

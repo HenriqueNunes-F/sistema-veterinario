@@ -31,7 +31,7 @@ function listarResumoDeAtendimentos() { // lista veterinários com total de cons
   });
 }
 
-function cadastrarVeterinario(id, nome, crmv, especialidade) {
+function cadastrarVeterinario(id, nome, crmv, especialidade) { // validação: ainda não valida duplicidade; cria veterinário direto
   const novoVeterinario = new Veterinario(id, nome, crmv, especialidade);
 
   veterinarios.push(novoVeterinario);

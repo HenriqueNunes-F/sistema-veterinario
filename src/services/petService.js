@@ -40,7 +40,7 @@ function listarPetsComTutor() {
   });
 }
 
-function cadastrarPet(id, nome, especie, raca, dataNascimento, peso, sexo, tutorId) {
+function cadastrarPet(id, nome, especie, raca, dataNascimento, peso, sexo, tutorId) { // validação: só cria o pet se o tutor existir
   const tutorExiste = tutores.find((tutor) => {
     return tutor.id === tutorId;
   });

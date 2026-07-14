@@ -12,7 +12,7 @@ function buscarTutorPorId(id) {
   });
 }
 
-function cadastrarTutor(id, nome, cpf, telefone, email, endereco) {
+function cadastrarTutor(id, nome, cpf, telefone, email, endereco) { // validação: ainda não valida duplicidade; cria tutor direto
   const novoTutor = new Tutor(id, nome, cpf, telefone, email, endereco);
 
   tutores.push(novoTutor);

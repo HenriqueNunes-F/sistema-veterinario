@@ -1,4 +1,4 @@
-class Consulta {
+class Consulta { // Consulta guarda petId. Consulta guarda veterinarioId.
   
   constructor(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) {
     this.id = id;

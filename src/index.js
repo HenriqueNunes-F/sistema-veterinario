@@ -18,9 +18,6 @@ console.log(petService.listarPetsComTutor());
 console.log("\nVeterinários cadastrados:");
 console.log(veterinarioService.listarVeterinarios());
 
-console.log("\nValor total da consulta 1:");
-console.log(consultaService.calcularValorTotalDaConsulta(1));
-
 // Cadastros
 console.log("\nCadastrando novo tutor:");
 

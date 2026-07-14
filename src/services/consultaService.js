@@ -37,7 +37,7 @@ function calcularValorTotalDaConsulta(consultaId) {
   return total;
 }
 
-function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) {
+function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observacoes, diagnostico) { // validação: só registra se pet e veterinário existirem
   const petExiste = pets.find((pet) => {
     return pet.id === petId;
   });
@@ -83,7 +83,7 @@ function registrarConsulta(id, petId, veterinarioId, dataHora, motivo, observaco
   };
 }
 
-function adicionarAcaoNaConsulta(id, consultaId, descricao, tipo, valor) {
+function adicionarAcaoNaConsulta(id, consultaId, descricao, tipo, valor) { // validação: só adiciona ação se a consulta existir
   const consultaExiste = consultas.find((consulta) => {
     return consulta.id === consultaId;
   });

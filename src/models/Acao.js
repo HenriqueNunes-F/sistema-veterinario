@@ -1,4 +1,4 @@
-class Acao {
+class Acao { // Acao guarda consultaId.
   
   constructor(id, consultaId, descricao, tipo, valor) {
     this.id = id;
