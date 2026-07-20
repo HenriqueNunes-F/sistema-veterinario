@@ -15,5 +15,9 @@
     "estudos"
   ],
   "author": "Henrique Nunes",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.23.1"
+  }
 }
