@@ -65,11 +65,63 @@ function cadastrarPet(id, nome, especie, raca, dataNascimento, peso, sexo, tutor
   return novoPet;
 }
 
+function atualizarPet(id, dadosAtualizados) {
+  const pet = buscarPetPorId(id);
+  
+  if(!pet) {
+    return null;
+    }
+    
+  if (dadosAtualizados.nome !== undefined) {
+    pet.nome = dadosAtualizados.nome;
+  }
+
+  if (dadosAtualizados.especie !== undefined) {
+    pet.especie = dadosAtualizados.especie;
+  }
+
+  if (dadosAtualizados.raca !== undefined) {
+    pet.raca = dadosAtualizados.raca;
+  }
+
+  if (dadosAtualizados.dataNascimento !== undefined) {
+    pet.dataNascimento = dadosAtualizados.dataNascimento;
+  }
+
+  if (dadosAtualizados.peso !== undefined) {
+    pet.peso = dadosAtualizados.peso;
+  }
+
+  if (dadosAtualizados.sexo !== undefined) {
+    pet.sexo = dadosAtualizados.sexo;
+  }
+
+  if (dadosAtualizados.tutorId !== undefined) {
+    pet.tutorId = dadosAtualizados.tutorId; }
+  return pet;
+  }
+
+  function removerPet(id) {
+    const indice = pets.findIndex((pet) =>{
+      return pet.id === id;
+    });
+
+    if (indice === -1 ) {
+      return null;  
+    }
+
+    const petRemovido = pets.splice(indice, 1);
+    return petRemovido[0];
+
+    
+  }
 module.exports = {
   listarPets,
   buscarPetPorId,
   listarPetsPorTutorId,
   buscarPetPorNome,
   listarPetsComTutor,
-  cadastrarPet
+  cadastrarPet,
+  atualizarPet,
+  removerPet
 };
